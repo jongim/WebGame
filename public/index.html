@@ -1,15 +1,16 @@
 <html>
 <head>
-<script src="socket.io/socket.io.js"></script> 
-<script src="jquery-1.6.1.min.js"></script><!-- Downloaded Jquery -->
-<title>Welcome!!</title>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="jquery-1.6.1.min.js"></script>
+    <!-- Downloaded Jquery -->
+    <title>Welcome!!</title>
 </head>
 
 <body>
-<script> 
-    $(document).ready(function(){
+<script>
+    $(document).ready(function () {
 
-        var socket  = new io.Socket(),
+        var socket = new io.Socket(),
                 text = $('#text');
 
         socket.connect();
@@ -23,12 +24,13 @@
         });
 
         socket.on('disconnect', function () {
-            text.html('disconnected');-
+            text.html('disconnected');
+            -
         });
 
     });
-</script> 
-    
+</script>
+
 <h1>Welcome to the hell!!</h1>
 <br/>
 <a href="/jsnes/index.html">Do you want play game?</a>

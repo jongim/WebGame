@@ -3,7 +3,7 @@ var sys = require('sys'),
     express = require('express'),
     app = express(),
     server = http.createServer(app),
-    io = require('socket.io').listen(server); 
+    io = require('socket.io').listen(server);
 
 server.listen(13000);
 
@@ -17,15 +17,15 @@ app.get('/', function (req, res) {
 
 //var socket = io.listen(app); 
 
-io.sockets.on('connection', function (client){ 
-  // new client is here!
-  setTimeout(function () {
+io.sockets.on('connection', function (client) {
+    // new client is here!
+    setTimeout(function () {
         client.send('Waited two seconds!');
     }, 2000);
 
-  client.on('message', function () {
-  }) ;
+    client.on('message', function () {
+    });
 
-  client.on('disconnect', function () {
-  });
+    client.on('disconnect', function () {
+    });
 });
