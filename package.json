@@ -1,0 +1,14 @@
+{
+  "name": "OldGame",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "jade": "*",
+    "socket.io": "*",
+    "stylus": "*"
+  }
+}
