@@ -1,37 +1,12 @@
 <html>
 <head>
     <script src="socket.io/socket.io.js"></script>
-    <script src="jquery-1.6.1.min.js"></script>
-    <!-- Downloaded Jquery -->
+    <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
     <title>Welcome!!</title>
 </head>
 
 <body>
-<script>
-    $(document).ready(function () {
-
-        var socket = new io.Socket(),
-                text = $('#text');
-
-        socket.connect();
-
-        socket.on('connect', function () {
-            text.html('connected');
-        });
-
-        socket.on('message', function (msg) {
-            text.html(msg);
-        });
-
-        socket.on('disconnect', function () {
-            text.html('disconnected');
-            -
-        });
-
-    });
-</script>
-
-<h1>Welcome to the hell!!</h1>
-<br/>
-<a href="/jsnes/index.html">Do you want play game?</a>
+    <h1>Welcome to the hell!!</h1>
+    <br>
+    <a href="/jsnes/index.html">Do you want play game?</a>
 </body>

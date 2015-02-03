@@ -13,19 +13,23 @@ app.get('/', function (req, res) {
     res.send('Hello World');
 });
 
-//app.listen(13000);
-
-//var socket = io.listen(app); 
-
-io.sockets.on('connection', function (client) {
+io.sockets.on('connection', function (socket) {
     // new client is here!
-    setTimeout(function () {
-        client.send('Waited two seconds!');
-    }, 2000);
+    console.log('Connection');
 
-    client.on('message', function () {
+    socket.on('btn', function(data) {
+        console.log("btn : " + data);
+        io.sockets.emit('btn', data);
+
     });
 
-    client.on('disconnect', function () {
+    socket.on('pad', function(data, flag) {
+        console.log("pad : " + data + flag);
+        io.sockets.emit('pad', data, flag);
+
     });
+
+    socket.on('disconnection', function() {
+        console.log('disconnection');
+    })
 });
