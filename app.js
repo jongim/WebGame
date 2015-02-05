@@ -29,6 +29,10 @@ io.sockets.on('connection', function (socket) {
 
     });
 
+    socket.on('UUID', function(data) {
+       console.log("UUID : " + data);
+    });
+
     socket.on('disconnection', function() {
         console.log('disconnection');
     })
