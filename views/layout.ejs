@@ -1,11 +1,13 @@
+<html>
 <head>
     <title><%=title%></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css'/>
-    <link href="css/bootstrap-glyphicons.css" rel="stylesheet">
+    <!--<link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css'/>-->
+    <link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'/>
+    <!--<link rel='stylesheet' type='text/css' href="css/bootstrap-glyphicons.css" />-->
     <script src="http://code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src="../se/js/HuskyEZCreator.js" charset="utf-8"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <!--<script src="/js/bootstrap.min.js"></script>-->
     <style>
         body {
             margin: 0;
@@ -13,7 +15,6 @@
             background: #CFCFC9 -webkit-gradient(linear, left top, left bottom, from(#B9B), to(#CFCFC9));
             background: #CFCFC9 -moz-linear-gradient(top, #B9B, #CFCFC9);
             background-attachment:fixed;
-            background-image : url('/images/bg.jpg');
 
             color: #555;
             -webkit-font-smoothing: antialiased;
@@ -40,6 +41,7 @@
     </style>
 </head>
 
+<body>
 <!-- Login Modal -->
 <div class="modal fade" id="myModal">
     <div class="modal-dialog">
@@ -100,7 +102,7 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <ul class="nav navbar-nav">
-        <li><a class="navbar-brand" href="/"><span class="glyphicon glyphicon-fire"></span>GCHOI</a></li>
+        <li><a class="navbar-brand" href="/"> OLD GAME</a></li>
         <li <% if(page == 0){%> class="active" <% } %> >
             <a href="/">Main</a>
         </li>
@@ -131,7 +133,7 @@
 
         <%- body%>
         <hr />
-        <font color=#333><center><img src="/images/gchoi.png" /></center></font>
+       <!-- <font color=#333><center><img src="/images/gchoi.png" /></center></font>-->
         <font color=#BBB><center>with Express3 / MongoDB / EJS / Twitter Bootstrap</center></font>
         <div style="width:100%; height:20px"></div>
     </div>
@@ -190,5 +192,7 @@
         oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
     }
 </script>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>
 

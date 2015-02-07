@@ -51,7 +51,8 @@ app.use(cookieParser());
 app.use(createSession());*/
 app.use(session({secret:'secret key'}));
 //app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
+
 app.engine('ejs',engine);
 
 //main (page:0)
