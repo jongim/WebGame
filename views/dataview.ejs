@@ -1,0 +1,16 @@
+<% layout('layout') -%>
+<!-- begin list-->
+<table class="table table-hover" style = "background-color:#ffffff">
+    <% for(var i = documentCount-1; i>=0; i--){ %>
+    <tr>
+        <td>
+            <h2><%= myData[i].title %></h2>
+            <% if(login=='login'){ %><p><a href="/EDIT?id=<%= myData[i]._id %>">Edit</a> / <a href="/DELETE?id=<%= myData[i]._id %>">Delete</a></p><% } %>
+            <%- myData[i].content %>
+        </td>
+    </tr>
+    <% } %>
+</table>
+<!-- end list-->
+
+<div class="alert alert-success">Running MongoDB server at http://localhost:3000</div>

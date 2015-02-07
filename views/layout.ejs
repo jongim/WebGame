@@ -1,0 +1,194 @@
+<head>
+    <title><%=title%></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css'/>
+    <link href="css/bootstrap-glyphicons.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="../se/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 50px 0px 0px 150px;
+            background: #CFCFC9 -webkit-gradient(linear, left top, left bottom, from(#B9B), to(#CFCFC9));
+            background: #CFCFC9 -moz-linear-gradient(top, #B9B, #CFCFC9);
+            background-attachment:fixed;
+            background-image : url('/images/bg.jpg');
+
+            color: #555;
+            -webkit-font-smoothing: antialiased;
+
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6,
+        .h1,.h2,.h3,.h4,.h5,.h6
+        {
+            font-family: Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 0;
+            border-top: 1px solid #AAA;
+        }
+        .page-header {
+            padding-bottom: 9px;
+            margin: 40px 0 0px;
+            border-bottom: 0px solid #EEE;
+        }
+    </style>
+</head>
+
+<!-- Login Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Member Login</h4>
+            </div>
+
+            <form method="post" action="/LOGIN?url=<%= url %>">
+                <div class="modal-body">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Username" maxlength="25">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" maxlength="16">
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Insert Modal -->
+<div class="modal fade" id="insertModal">
+    <div class="modal-dialog" style="width:80%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Insert Data</h4>
+            </div>
+            <form action="/SUBMIT?url=<%= url %>" method="post">
+                <fieldset>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail">Title</label>
+                            <input type="text" class="form-control" name="title" id="irTitle" placeholder="Title" maxlength="25">
+                        </div>
+                        <textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:612px; display:none;"></textarea>
+                        <!--textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default navbar-btn" onclick="submitContents(this);" value="Submit" />
+                    </div>
+                </fieldset>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <ul class="nav navbar-nav">
+        <li><a class="navbar-brand" href="/"><span class="glyphicon glyphicon-fire"></span>GCHOI</a></li>
+        <li <% if(page == 0){%> class="active" <% } %> >
+            <a href="/">Main</a>
+        </li>
+        <li <% if(page == 1){ %>class="active" <% } %>>
+            <a href="/MEMBERDB">Members</a>
+        </li>
+        <li <% if(page == 2){ %>class="active" <% } %>>
+            <a href="/DATAVIEW">Data View</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right" style="margin:4px;">
+        <!-- Button trigger modal -->
+        <% if(login =='login'){ %>
+        <font color="white">Welcome, <%= username %>&nbsp&nbsp&nbsp&nbsp&nbsp</font>
+        <% }else{ %>
+        <% } %>
+
+        <% if(login!='login'){ %><a data-toggle="modal" href="#myModal" class="btn btn-primary navbar-btn btn-small" style="height:32px">Login</a><% }else{ %>
+        <a data-toggle="modal" href="/LOGOUT?url=<%= url %>" class="btn btn-primary navbar-btn btn-small" style="height:32px">Logout</a><% } %>
+        <% if(login!='login'){ %><a href="/SIGN_UP" class="navbar-link"><button type="button" class="btn btn-default navbar-btn btn-small" style="height:32px">Sign up</button></a><% } %>
+        <% if(login=='login'){ %><a data-toggle="modal" href="#insertModal" class="btn btn-default navbar-btn btn-small" style="height:32px">Insert Data</a><% } %>
+    </ul>
+</div>
+
+<div style="width:800px; background: #CFCFC9 -webkit-gradient(linear, left top, left bottom, to(#777), from(#CFCFC9));background: #CFCFC9 -moz-linear-gradient(top, #CFCFC9, #777)">
+    <div style="margin:0px 12px 0px 12px">
+        <div style="width:100%; height:16px"></div>
+
+        <%- body%>
+        <hr />
+        <font color=#333><center><img src="/images/gchoi.png" /></center></font>
+        <font color=#BBB><center>with Express3 / MongoDB / EJS / Twitter Bootstrap</center></font>
+        <div style="width:100%; height:20px"></div>
+    </div>
+</div>
+<div style="width:800px; height:15px; background-color:#444"></div>
+
+<script type="text/javascript">
+    var oEditors = [];
+
+    // 추가 글꼴 목록
+    //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
+
+    nhn.husky.EZCreator.createInIFrame({
+        oAppRef: oEditors,
+        elPlaceHolder: "ir1",
+        sSkinURI: "../se/SmartEditor2Skin.html",
+        htParams : {
+            bUseToolbar : true,             // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseVerticalResizer : true,     // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseModeChanger : true,         // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+            //aAdditionalFontList : aAdditionalFontSet,     // 추가 글꼴 목록
+            fOnBeforeUnload : function(){
+                //alert("완료!");
+            }
+        }, //boolean
+        fOnAppLoad : function(){
+            //예제 코드
+            //oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+        },
+        fCreator: "createSEditor2"
+    });
+
+    function pasteHTML() {
+        var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
+        oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);
+    }
+
+    function showHTML() {
+        var sHTML = oEditors.getById["ir1"].getIR();
+        alert(sHTML);
+    }
+
+    function submitContents(elClickedObj) {
+        oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);  // 에디터의 내용이 textarea에 적용됩니다.
+
+        // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+
+        try {
+            elClickedObj.form.submit();
+        } catch(e) {}
+    }
+
+    function setDefaultFont() {
+        var sDefaultFont = '궁서';
+        var nFontSize = 24;
+        oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
+    }
+</script>
+
+
