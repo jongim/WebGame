@@ -51,7 +51,7 @@ app.use(cookieParser());
 app.use(createSession());*/
 app.use(session({secret:'secret key'}));
 //app.use(app.router);
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/views')));
 
 app.engine('ejs',engine);
 
@@ -71,10 +71,10 @@ app.post('/LOGIN', function(req,res,next) {
     next();
 },routes.login_post);
 
-//Login Button (Enabled after loggin in)
+//Logout Button (Enabled after loggin in)
 app.get('/LOGOUT', routes.logout);
 
-//Sign uo Button
+//Sign up Button
 app.get('/SIGN_UP', routes.sign_up);
 app.post('/SIGN_UP', function(req,res,next) {
     if(req.body.password == req.body.confirm_password) {
@@ -93,7 +93,7 @@ app.post('/SIGN_UP', function(req,res,next) {
 app.get('/CHECKUSERNAME',routes.checkusername);
 
 //Naver Smarteditor Image Upload
-app.post('/UPLOAD',function(req,res) {
+/*app.post('/UPLOAD',function(req,res) {
     var str = req.header('User-Agent');
     var os = str.search("Win");
     var fileName = req.files.file.path;
@@ -108,7 +108,7 @@ app.post('/UPLOAD',function(req,res) {
     res.write('&sFileName=' + fileName);
     res.write('&sFileURL=/se/uploadTmp/' + fileName);
     res.end();
-});
+});*/
 
 //Naver SmartEditor Content Submit
 app.post('/SUBMIT', routes.insertData);

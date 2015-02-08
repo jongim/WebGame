@@ -91,9 +91,14 @@ exports.login_post = function(req, res) {
         if(member != null) {
             req.session.login = 'login';
             req.session.username = req.username;
-        };
-        res.status(200);
-        res.redirect(url.parse(req.url,true).query.url);
+            res.status(200);
+            res.redirect(url.parse(req.url,true).query.url + "MEMBERDB");
+        }
+        else {
+            res.status(200);
+            res.redirect(url.parse(req.url, true).query.url);
+
+        }
     });
 };
 
@@ -101,11 +106,12 @@ exports.logout = function(req, res) {
     req.session.login = 'logout';
 
     res.status(200);
-    res.redirect(url.parse(req.url,true).query.url);
+    res.redirect('/');
 };
 
 exports.sign_up = function(req, res) {
     res.status(200);
+    //res.redirect(url.parse(req.url,true).query.url + "SIGN_UP");
     res.render('sign_up', {
         title: 'Sign up',
         url: req.url,
@@ -114,6 +120,7 @@ exports.sign_up = function(req, res) {
         username: req.session.username,
         existingUsername: 'null'
     });
+
 };
 
 exports.checkusername = function(req, res) {
@@ -148,10 +155,10 @@ exports.sign_up_post = function(req, res) {
                     }
                     console.log('member is inserted');
                 });
-                res.redirect('/MEMBERDB');
+                res.redirect('/');
             }
             else {
-                res.redirect('/');
+                res.redirect('/SIGN_UP');
             }
         });
     }
