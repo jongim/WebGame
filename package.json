@@ -1,9 +1,9 @@
 {
-  "name": "one",
+  "name": "OldGame",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "~1.10.2",
@@ -14,6 +14,7 @@
     "mongoose": "3.8",
     "ejs-locals": "*",
     "cookie-session": "*",
-    "express-method-override": "*"
+    "express-method-override": "*",
+    "socket.io" : "0.9.6"
   }
 }

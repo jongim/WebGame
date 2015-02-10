@@ -2,26 +2,24 @@
 <head>
     <title><%= title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='http://code.jquery.com/jquery.js'></script>
+    <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
-    <link rel='stylesheet' type='text/css' href='http://bootswatch.com/united/bootstrap.min.css'/>
+    <link rel='stylesheet' type='text/css'
+          href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'/>
+    <link rel='stylesheet' type='text/css' href='stylesheets/style.css'/>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <style>
         body {
             padding: 50px 0px 0px 0px;
-            background: #595959 -webkit-gradient(linear, left top, left bottom, from(#595959), to(#CFCFC9));
-            background: #595959 -moz-linear-gradient(top, #595959, #CFCFC9);
             background-attachment: fixed;
-
-            color: #555;
+            background-color: #000080;
             -webkit-font-smoothing: antialiased;
-
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: emu;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: emu;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -31,34 +29,38 @@
             border: 0;
             border-top: 1px solid #AAA;
         }
+
+        * {
+            font-family: emu;
+        }
     </style>
 </head>
 
 <body>
 <div style="padding-left: 100px; padding-right: 100px">
-    <div class="navbar navbar-default navbar-fixed-top">
-
-        <font color=#AAA size="6" style="margin-left: 15px">Old Game</font>
+    <div class="navbar navbar-default navbar-fixed-top" style="background-color: #000080">
+        <a class="navbar-brand" href="/" style="margin-left: 15px; color:#FFF; font-family:emu"> Old Game</a>
         <ul class="nav navbar-nav pull-right" style="margin:4px;">
             <% if(login == 'login'){ %>
             <font color="white">Welcome, <%= username %>&nbsp&nbsp&nbsp&nbsp&nbsp</font>
             <a data-toggle="modal" href="/LOGOUT?url=<%= url %>" class="btn btn-primary navbar-btn btn-small"
-               style="height:30px";>Logout</a>
+               style="height:30px; background-color: #000080" ;>Logout</a>
             <% }else{ %>
             <% } %>
         </ul>
     </div>
 
-    <div style="background: #c30133 -webkit-gradient(linear, left top, left bottom, to(#cfcfc9), from(#cfcfc9));background: #cfcfc9 -moz-linear-gradient(top, #cfcfc9, #777)">
+    <div style="background: #000080">
         <div style="margin-top: 10px; padding-left: 100px; padding-right: 100px">
             <div style="width:100%; height:16px"></div>
-            <h3 style="text-align: center;">Welcome to Old Game</h3>
+            <font style="text-align: center" ; size="4" ; color="white">Welcome to Old Game</font>
+
             <div style="width:100%; height:16px"></div>
             <%- body %>
             <br/>
             <hr/>
 
-            <font color=#AAA>
+            <font color=#FFF>
                 <center>Samsung Software Membership</center>
             </font>
 
@@ -66,7 +68,7 @@
         </div>
     </div>
 
-    <div style="height:15px; background-color:#444"></div>
+    <div style="height:15px; background-color:#ffffff"></div>
 </div>
 </body>
 

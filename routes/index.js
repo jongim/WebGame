@@ -21,7 +21,7 @@ var Member = mongoose.model('Member', memberSchema);
 // Main (page: 0)
 exports.index = function (req, res) {
     if (req.session.login === 'login') {
-        res.redirect('http://naver.com');
+        res.redirect('/gameroomlist');
         return;
     }
     res.status(200);
@@ -34,42 +34,6 @@ exports.index = function (req, res) {
     });
 };
 
-exports.member_db = function (req, res) {
-
-    if (req.session.login !== 'login') {
-        res.redirect('/');
-        //res.status(401).send('Not Login').end();
-        return;
-    }
-
-
-    var uri = url.parse(req.url, true).query;
-    if (uri.cmd == "del") {
-        Member.remove({_id: uri.id}, function (err, result) {
-            res.status(300);
-            res.redirect('/MEMBERDB');
-        });
-    }
-    else {
-        res.status(200);
-        Member.count({}, function (err, count) {
-            Member.find({}, function (err, result) {
-                res.render('memberdb', {
-                    title: 'Member DB',
-                    page: 1,
-                    url: req.url,
-                    database: 'local',
-                    collectionName: 'members',
-                    documentCount: count,
-                    myMember: result,
-                    login: req.session.login,
-                    username: req.session.username
-                });
-            });
-        });
-    }
-};
-
 exports.login_post = function (req, res) {
     res.status(200);
     Member.findOne({username: req.username, password: req.password}, function (err, member) {
@@ -77,12 +41,37 @@ exports.login_post = function (req, res) {
             req.session.login = 'login';
             req.session.username = req.username;
             res.status(200);
-            res.redirect(url.parse(req.url, true).query.url + "MEMBERDB");
+            res.redirect('/gameroomlist');
+            console.log('로그인 성공');
         }
         else {
             res.status(200);
-            res.redirect(url.parse(req.url, true).query.url);
+            res.redirect('/');
+        }
+    });
+};
 
+exports.gameroomlist = function (req, res) {
+    if (req.session.login !== 'login') {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('gameroomlist', {
+        title: 'OldGame',
+        login: req.session.login,
+        username: req.session.username,
+        url: req.url
+    });
+}
+
+exports.moblie_login_post = function (req, res) {
+    Member.findOne({username: req.username, password: req.password}, function (err, member) {
+        if (member != null) {
+            res.json({status: 200, username: req.username});
+        }
+        else {
+            res.json({status: 100, username: req.username});
         }
     });
 };
@@ -148,3 +137,32 @@ exports.sign_up_post = function (req, res) {
     }
 };
 
+exports.jsnes = function (req, res) {
+    if (req.session.login !== 'login') {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('jsnes', {
+        title: 'OldGame',
+        url: req.url,
+        page: 6,
+        login: req.session.login,
+        username: req.session.username
+    });
+};
+
+exports.createroom = function(req, res) {
+    if (req.session.login !== 'login') {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('createroom', {
+        title: 'OldGame',
+        url: req.url,
+        page: 7,
+        login: req.session.login,
+        username: req.session.username
+    });
+}
