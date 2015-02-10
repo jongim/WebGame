@@ -1,4 +1,59 @@
 <% layout('layout') %>
 
-<div class="modal-content">
-</div>
+<script src="js/bootstrap-confirmation.js"></script>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="insert-name" class="col-sm-3 control-label" style="color: #ffffff">ROOMNAME</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="insert-name" placeholder="insert ">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="insert-num" class="col-sm-3 control-label" style="color: #ffffff">NUMBER</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="insert-num" placeholder="insert " >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="insert-game" class="col-sm-3 control-label" style="color: #ffffff">Game</label>
+        <div class="col-xs-3">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="insert-game" data-toggle="dropdown" aria-expanded="true" >
+                    select
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Bobble Bobble</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="insert-player" class="col-sm-3 control-label" style="color: #ffffff">1P / 2P</label>
+        <div class="col-xs-3">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="insert-player" data-toggle="dropdown" aria-expanded="true">
+                    select
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1P</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2P</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-default">Create</button>
+        </div>
+    </div>
+</form>
+
